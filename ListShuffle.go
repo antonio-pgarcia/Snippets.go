@@ -15,12 +15,15 @@ func myappend(s1, s2 []int) []int {
 
 // -- | Removes the the nth element from list
 func drop(i int, l []int) []int {
+	if len(l) == 0 {return []int{}}
 	return myappend(l[:i], l[i+1:])
 }
 
 // -- | Pop one element from a specific list position
 func pop(i int, l []int) (int, []int) {
-	var e = l[i]
+	fmt.Println(i)
+	var e = 0
+	if len(l) > 0 { e = l[i] }
 	return e, drop(i, l)
 }
 
@@ -41,10 +44,10 @@ func shuffle(l []int) []int {
 
 // -- | Shuffle' auxiliary
 func shufflep(r int, l1, l2 []int) []int {
-	//fmt.Println(len(l1))
+	fmt.Println(len(l2))
 	var llen = len(l1)
 	h, t := pop(r, l1)
-	fmt.Println(h, t)
+	//fmt.Println(h, t)
 	//fmt.Println(l2)
 	if llen == 0 {
 		return l2
@@ -60,6 +63,6 @@ func main() {
 	var l = []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 	//var v= []int {}
 	fmt.Println("List Shuffle!")
-	//fmt.Println(len(v))
+	//	fmt.Println(v[0])
 	fmt.Println(shuffle(l))
 }
