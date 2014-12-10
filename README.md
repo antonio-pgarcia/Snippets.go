@@ -1,4 +1,4 @@
 Snippets.go
 ===========
 
-My coding snippetsin go language
+My coding snippets in go language.
