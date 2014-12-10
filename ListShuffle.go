@@ -1,3 +1,4 @@
+// ListShuffle
 package main
 
 import (
@@ -15,21 +16,23 @@ func myappend(s1, s2 []int) []int {
 
 // -- | Removes the the nth element from list
 func drop(i int, l []int) []int {
-	if len(l) == 0 {return []int{}}
+	if len(l) == 0 {
+		return []int{}
+	}
 	return myappend(l[:i], l[i+1:])
 }
 
 // -- | Pop one element from a specific list position
 func pop(i int, l []int) (int, []int) {
-	fmt.Println(i)
 	var e = 0
-	if len(l) > 0 { e = l[i] }
+	if len(l) > 0 {
+		e = l[i]
+	}
 	return e, drop(i, l)
 }
 
 // -- | Generate random number within interval a-b with seed s
 func myrandom(a, b, s int) int {
-	fmt.Println(a, b, s)
 	if a == 0 && b == 0 {
 		return 0
 	}
@@ -44,25 +47,20 @@ func shuffle(l []int) []int {
 
 // -- | Shuffle' auxiliary
 func shufflep(r int, l1, l2 []int) []int {
-	fmt.Println(len(l2))
 	var llen = len(l1)
 	h, t := pop(r, l1)
-	//fmt.Println(h, t)
-	//fmt.Println(l2)
 	if llen == 0 {
 		return l2
 	} else {
 		//return l1
-		shufflep(myrandom(0, llen-1, r), t, append(l2, h))
+		return shufflep(myrandom(0, llen-1, r), t, append(l2, h))
 	}
 	return l2
 }
 
 // -- | The main entry point.
 func main() {
-	var l = []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
-	//var v= []int {}
+	var v = []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 	fmt.Println("List Shuffle!")
-	//	fmt.Println(v[0])
-	fmt.Println(shuffle(l))
+	fmt.Println(shuffle(v))
 }
